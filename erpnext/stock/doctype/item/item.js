@@ -768,13 +768,16 @@ $.extend(erpnext.item, {
 			if (!row.disabled) {
 				if (row.numeric_values) {
 					fieldtype = "Float";
-					desc =
-						"Min Value: " +
-						row.from_range +
-						" , Max Value: " +
-						row.to_range +
-						", in Increments of: " +
-						row.increment;
+					let from = frappe.format_value(row.from_range, { fieldtype: "Float" });
+					let to = frappe.format_value(row.to_range, { fieldtype: "Float" });
+					let inc = frappe.format_value(row.increment, { fieldtype: "Float" });
+
+					desc = __("Min Value: {0}, Max Value: {1}, in Increments of: {2}", [
+						from,
+						to,
+						inc
+					]);
+
 				} else {
 					fieldtype = "Data";
 					desc = "";
