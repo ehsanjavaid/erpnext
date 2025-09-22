@@ -768,9 +768,9 @@ $.extend(erpnext.item, {
 			if (!row.disabled) {
 				if (row.numeric_values) {
 					fieldtype = "Float";
-					let from = frappe.format_value(row.from_range, { fieldtype: "Float" });
-					let to = frappe.format_value(row.to_range, { fieldtype: "Float" });
-					let inc = frappe.format_value(row.increment, { fieldtype: "Float" });
+					let from = frappe.format(row.from_range, { fieldtype: "Float" }, { always_show_decimals: true });
+					let to = frappe.format(row.to_range, { fieldtype: "Float" }, { always_show_decimals: true });
+					let inc = frappe.format(row.increment, { fieldtype: "Float" }, { always_show_decimals: true });
 
 					desc = __("Min Value: {0}, Max Value: {1}, in Increments of: {2}", [
 						from,
